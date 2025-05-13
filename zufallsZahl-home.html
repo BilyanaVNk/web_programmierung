@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Zufallszahl-Spiel</title>
+</head>
+<body>
+  <h1>Willkommen beim Zufallszahl-Spiel!</h1>
+  <p>Klicke auf den Button, um das Spiel zu starten.</p>
+  <button onclick="rateZahl()">Spiel starten</button>
+  <script src="zufallsZahl.js"></script>
+
+<script>
+  let zufallsZahl = Math.floor(Math.random() * 101);
+  let versuch = 1;
+  
+  function rateZahl() {
+    if (versuch > 10) {
+      alert(`Leider verloren! Die richtige Zahl war ${zufallsZahl}.`);
+      return;
+    }
+  
+    let eingabe = prompt(`Versuch ${versuch} von 10: Rate die Zahl zwischen 0 und 100`);
+    let schaetzung = parseInt(eingabe);
+  
+    /*
+    if (isNaN(schaetzung)) {
+      alert("Ungültige Eingabe! Bitte gib eine Zahl ein.");
+      rateZahl(); // Versuch nicht zählen
+      return;
+    } */
+  
+    if (schaetzung === zufallsZahl) {
+      alert(`Richtig! Die Zahl war ${zufallsZahl}. Du hast sie in ${versuch} Versuch(en) erraten.`);
+      return;
+    } else if (schaetzung > zufallsZahl) {
+      alert("Zu hoch geraten.");
+    } else {
+      alert("Zu niedrig geraten.");
+    }
+  
+    versuch++;
+    rateZahl(); // Nächster Versuch
+  }
+  
+  rateZahl(); // Spiel starten
+  </script>  
+
+
+</body>
+</html>
