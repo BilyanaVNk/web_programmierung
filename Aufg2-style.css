@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#nachricht {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+h1 {
+  color: #da2020;
+}
+
+p {
+  color: #aeb820;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #38388f;
+  color: white; 
+}
+
+input[type="number"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
