@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Click-Image</title>
+</head>
+<body>
+    <img id="wechselbild" src="Aufg3-Bilder/Bilder/img_bild1.png">
+    <script>
+      const bild = document.getElementById('wechselbild');
+      const bilder = [
+        'Aufg3-Bilder/Bilder/img_bild1.png',
+        'Aufg3-Bilder/Bilder/img_bild2.png',
+        'Aufg3-Bilder/Bilder/img_bild3.png'
+      ];
+      let index = 0;
+
+      bild.addEventListener('mouseenter', function() {
+        bild.src = 'Aufg3-Bilder/Bilder/img_hover.png';
+      });
+      bild.addEventListener('mouseleave', function() {
+        bild.src = bilder[index];
+      });
+      bild.addEventListener('click', function() {
+        index = (index + 1) % bilder.length;
+        bild.src = bilder[index];
+      });
+
+      let pink = false;
+      document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key.toLowerCase() === 'q') {
+          pink = !pink;
+          document.body.style.backgroundColor = pink ? 'hotpink' : 'white';
+          event.preventDefault();
+        }
+      });
+    </script>
+</body>
+</html>
