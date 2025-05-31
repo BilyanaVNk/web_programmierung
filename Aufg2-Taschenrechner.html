@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Taschenrechner</title>
+  <link rel="stylesheet" href="Aufg2-style.css">
+</head>
+<body>
+
+  <h1>Taschenrechner</h1>
+
+  <p>Bitte geben Sie eine Nummer ein.</p>
+  <input type="number1" id="eingabe1" placeholder="Zahl eingeben" min="0" max="100">
+  <p>Geben Sie nun eine der folgenden Rechenungsoperatoren ein: +, -, * oder /.</p>
+  <input type="operation" id="operation" placeholder="Rechenungsoperator eingeben"
+         pattern="[+\-*/]" title="Bitte nur +, -, * oder / eingeben">
+  <p>Und jetzt bitte noch eine Nummer.</p>  
+    <input type="number2" id="eingabe2" placeholder="Zahl eingeben" min="0" max="100">
+    <p>Drücken Sie den Button, um das Ergebnis zu berechnen.</p>
+  <button id="rechnen">Rechnen</button>
+ 
+   <div id="ergebnis" style="margin-top:20px; font-weight:bold;"></div>
+
+  <script>'use strict';
+function ergebnisBerechnen(ersteNummer, rechnenOperator, zweiteNummer) {
+      let rechnen;
+      if (rechnenOperator === '+') {
+          rechnen = ersteNummer + zweiteNummer;
+      } else if (rechnenOperator === '-') {
+          rechnen = ersteNummer - zweiteNummer;
+      } else if (rechnenOperator === '*') {
+          rechnen = ersteNummer * zweiteNummer;
+      } else if (rechnenOperator === '/') {
+          rechnen = zweiteNummer !== 0 ? ersteNummer / zweiteNummer : 'Division durch 0 nicht erlaubt';
+      } else {
+          rechnen = 'ungültig';
+      }
+      return rechnen;
+    }
+
+    document.getElementById('rechnen').addEventListener('click', function() {
+      const eingabe1 = Number(document.getElementById('eingabe1').value);
+      const operation = document.getElementById('operation').value.trim();
+      const eingabe2 = Number(document.getElementById('eingabe2').value);
+      const ergebnisDiv = document.getElementById('ergebnis');
+
+      if (isNaN(eingabe1) || isNaN(eingabe2) || !operation) {
+        ergebnisDiv.textContent = "Bitte alle Felder korrekt ausfüllen.";
+        return;
+      }
+
+      const ergebnis = ergebnisBerechnen(eingabe1, operation, eingabe2);
+
+      if (ergebnis === 'ungültig') {
+        ergebnisDiv.textContent = "Sie haben einen ungültigen Rechenoperator eingegeben.";
+      } else {
+        ergebnisDiv.textContent = `Abracadabra: Das Ergebnis ist ${ergebnis}`;
+      }
+    });
+  </script>
+
+</body>
+</html>
